@@ -1,6 +1,4 @@
-using System;
 using Xunit;
-using GameOfLife;
 
 namespace GameOfLife.Tests
 {
@@ -13,24 +11,23 @@ namespace GameOfLife.Tests
         [Fact]
         public void ComputeNextGeneration_DeadMatrix_ReturnsDeadMatrix()
         {
-
+            //Arrange
             CellState[,] matrix = new CellState[3, 3]
             {
                  { CellState.Dead, CellState.Dead, CellState.Dead},
                  { CellState.Dead, CellState.Dead, CellState.Dead},
                  { CellState.Dead, CellState.Dead, CellState.Dead}
             };
-
             var game = new GameOfLife(matrix);
 
+            //Act
             var matrixResult = game.ComputeNextGeneration();
 
+            //Assert
             foreach(var cell in matrix)
             {
                 Assert.Equal(CellState.Dead, cell);
             }
         }
-
-       
     }
 }
