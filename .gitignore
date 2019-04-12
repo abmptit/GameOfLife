@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+/**/bin/Debug/*
+/**/bin/obj/*
+
+**/obj/*
+*.suo
+**/v15/*
