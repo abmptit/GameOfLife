@@ -137,7 +137,7 @@ namespace GameOfLife.Tests
         }
 
         [Fact]
-        public void Test()
+        public void Roulette_Wheel()
         {
             //Arrange
             //Row/Column
@@ -156,22 +156,13 @@ namespace GameOfLife.Tests
             var matrixResult = game.ComputeNextGeneration();
 
             //Assert
-            var cell1 = matrixResult[1, 0];
-            CellState[,] expectedmatrix = new CellState[6, 6]
-           {
-                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
-                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
-                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
-                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
-                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
-                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead}
-           };
-            Assert.Equal(expectedmatrix, matrix);
-
-
+            var cell1 = matrixResult[2, 1];
+            Assert.Equal(CellState.Alive, cell1);
+            var cell2 = matrixResult[3, 1];
+            Assert.Equal(CellState.Alive, cell2);
+            var cell3 = matrixResult[4, 1];
+            Assert.Equal(CellState.Alive, cell3);
         }
-
-
 
     }
 }
