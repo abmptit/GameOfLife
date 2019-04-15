@@ -163,6 +163,44 @@ namespace GameOfLife.Tests
             var cell3 = matrixResult[4, 1];
             Assert.Equal(CellState.Alive, cell3);
         }
+		[Fact]
+        public void Test()
+        {
+            //Arrange
+            //Row/Column
+            CellState[,] matrix = new CellState[6, 6]
+            {
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Alive, CellState.Alive, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead}
+            };
+            var game = new GameOfLife(matrix);
+            //Act
+            var matrixResult = game.ComputeNextGeneration();
+            //Assert
+            
+            CellState[,] expectedmatrix = new CellState[6, 6]
+           {
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Alive, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead},
+                 { CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead, CellState.Dead}
+           };
+
+            for (int i = 0; i < expectedmatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < expectedmatrix.GetLength(1); j++)
+                {
+                    Assert.Equal(expectedmatrix[i, j], matrixResult[i, j]);
+
+                }
+            }
+        }
 
     }
 }
